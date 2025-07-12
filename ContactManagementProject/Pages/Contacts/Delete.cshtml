@@ -1,0 +1,18 @@
+﻿@page "{id:int}"
+@model ContactManagementProject.Pages.Contacts.DeleteModel
+@{
+    ViewData["Title"] = "Delete Contact";
+}
+
+<h1>Delete Contact</h1>
+
+<h4>Are you sure you want to delete this contact?</h4>
+<div class="mb-3"><strong>Name:</strong> @Model.Contact.Name</div>
+<div class="mb-3"><strong>Contact Number:</strong> @Model.Contact.ContactNumber</div>
+<div class="mb-3"><strong>Email:</strong> @Model.Contact.Email</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Contact.ID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

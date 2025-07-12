@@ -1,0 +1,35 @@
+﻿@page "{id:int}"
+@model ContactManagementProject.Pages.Contacts.EditModel
+@{
+    ViewData["Title"] = "Edit Contact";
+}
+
+<h1>Edit Contact</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Contact.ID" />
+    <div class="mb-3">
+        <label asp-for="Contact.Name" class="form-label"></label>
+        <input asp-for="Contact.Name" class="form-control" />
+        <span asp-validation-for="Contact.Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Contact.ContactNumber" class="form-label"></label>
+        <input asp-for="Contact.ContactNumber" class="form-control" />
+        <span asp-validation-for="Contact.ContactNumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Contact.Email" class="form-label"></label>
+        <input asp-for="Contact.Email" class="form-control" />
+        <span asp-validation-for="Contact.Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
