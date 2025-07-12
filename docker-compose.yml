@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  webapp:
+    build:
+      context: ./src
+      dockerfile: ContactManagementProject/Dockerfile
+    ports:
+      - "7149:80"
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Port=3306;Database=contact_db;User=joseemmanuel-dotnet;Password=ujEwWCLMDNVqinD;
+  
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: contact_db
+      MYSQL_USER: joseemmanuel-dotnet
+      MYSQL_PASSWORD: ujEwWCLMDNVqinD
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: joseemmanuel-dotnet
+      PMA_PASSWORD: ujEwWCLMDNVqinD
+
+volumes:
+  db_data:
