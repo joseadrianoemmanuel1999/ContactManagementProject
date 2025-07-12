@@ -3,7 +3,7 @@ version: '3.8'
 services:
   webapp:
     build:
-      context: ./src
+      context: .
       dockerfile: ContactManagementProject/Dockerfile
     ports:
       - "7149:80"
